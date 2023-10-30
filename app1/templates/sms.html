@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+        html{
+            background-color: rgb(210, 206, 210);
+            /* background: rgb(94, 13, 170); */
+        }
+        .container{
+            align-self: center;
+            padding: 5%;
+        }
+        .navbar .navitems a{
+            text-decoration: none;
+            margin: 2%;
+        }
+        .post{
+            /* background: rgb(94, 13, 170); */
+            background-color: rgb(220, 208, 253);
+            border-radius: 5px;
+            padding: 15px 15px;
+            border: 1px solid ;
+        }
+        .sms-box{
+            height: 500px;
+            background-color: rgb(237, 237, 238);
+            border-radius: 10px;
+            border: 1px solid rgb(140, 64, 216);
+            margin: 0px 0px ;
+            overflow: scroll;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sender,.you{
+            border-radius: 5px;
+            color:  rgb(140, 64, 216);
+            background-color: rgb(237, 237, 238);
+            margin:0% 2%;
+        }
+
+        .sender{
+    
+            padding:0% 10% 0% 75%;
+        }
+        .send-message{
+            margin: 2% 4%;
+            margin-top: 0%; 
+            padding: 2%; 
+            background-color: rgb(210, 190, 223);
+            border-radius: 10px 0px 10px 10px;
+        }
+        
+        .you-message{  
+            margin: 2% 4%;
+            margin-top: 0%; 
+            padding: 2%; 
+            background-color: rgb(210, 190, 223);
+            border-radius: 0px 10px 10px 10px;
+        }
+        .btn-public{
+            padding: 6px;
+            color: rgb(25, 31, 228);
+            text-transform: uppercase;
+        }
+        .form input{
+            border-radius: 5px;
+            padding: 4px;
+            border-radius: 5px ;
+            border:0.5px;
+             }
+        .navitems> .sender{  
+            padding: 10px;
+            background-color: rgb(237, 237, 238);
+            border-radius: 10px;
+            border: 1px solid rgb(140, 64, 216);
+            
+        }
+        a{
+            text-decoration: none;
+        }
+
+        .form{
+            margin-top: 15px;
+            align-items: end;
+        }
+        .form input{
+            margin: 0px 0px;
+            border:1px solid rgb(140, 64, 216);
+            padding: 10px 35% 10px 10px;
+        }
+        .form button{
+            border-radius: 10px;
+            border:2px solid rgb(140, 64, 216);
+            background-color: rgb(237, 237, 238);
+            padding: 6px 9%;
+            margin-left: 10px;
+            font-size: medium;
+
+            color: rgb(140, 64, 216);
+            text-size-adjust: 1rem;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        
+        
+        <div class="post">
+            <div class="navbar">
+                
+                <h1 class="navitems"><a href="{% url 'chatsPage' %}" > < </a>
+                    <button class="sender"><a href="" >{{friendEmail}}</a></button>
+                </h1>
+            </div>
+
+            <div class="sms-box">
+                {% for sms_k,sms in messages.items %}
+                    
+                        {% if sms.sender == friendEmail %}
+
+                            <div class="sender">
+                                <h5>{{sms.sender}}</h5>
+                            </div>
+                            <h5 class="send-message">{{sms.message}}</h5>
+                            
+                        {% elif sms.sender == user.email and sms.reciver == friendEmail %}
+                            <div class="you">
+                                <h5>you</h5>
+                            </div>
+                            <h5 class="you-message">{{sms.message}}</h5>
+                        
+                        {% endif %}
+
+                {% endfor %}
+            </div>
+
+
+            <form method="post" action="{% url 'newsms' %}" class="form">
+                {% csrf_token %}
+                <input type="text" name="message" id="message">
+                <input type="hidden" name="sender" id="sender" value="{{user.email}}">
+                <input type="hidden" name="reciver" id="reciver" value="{{friendEmail}}">
+                <button type="submit" class="btn-public">Send</button>
+            </form>
+
+        </div>
+
+    </div> 
+</body>
+</html>

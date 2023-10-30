@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+        html{
+            background-color: rgb(210, 206, 210);
+            /* background: rgb(94, 13, 170); */
+        }
+        .container{
+            background-color: rgb(220, 208, 253);
+            border: .6px solid ;
+            align-self: center;
+            padding:0px 10%;
+            height: 700px;
+        }
+        .container .navitems{
+            width: 100%;
+            
+        }
+        .container h3{
+            display: flex;
+            flex-direction: row-reverse;
+        }
+        .container h3 a{
+            text-decoration: none;  
+        }
+        .navitems> a{
+
+            text-decoration: none;
+        }
+        .homelink{
+           margin-right: 20%;
+        }
+        .chatlink{
+            font-family: serif;
+            font-weight: bold;
+            background-color: transparent;
+            border: none;
+            float: right;
+            font-size: 30px;
+            margin-right: 0%;
+            padding: 0% 0% 1px 1px;
+            color: rgb(85, 8, 158);
+
+        }
+        .btn-del{
+            color: rgb(195, 1, 1);
+            text-transform: uppercase;
+            text-decoration: none;
+            
+        }
+        .com-email{
+            color: rgb(94, 13, 170);
+            margin-right: 20px;
+        }
+        .btn-update{
+            color: green;
+            text-transform: uppercase;
+            text-decoration: none;
+            
+        }
+
+        
+        .post-head{
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: rgb(179, 176, 181);
+            border-radius: 5px;
+            
+        }
+
+        .post-box{
+            background-color: rgb(237, 237, 238);
+            height: 550px;
+            border: 0.3px solid white;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: scroll;
+        }
+        .post{
+             /* background: rgb(94, 13, 170); */
+            background-color: rgb(220, 208, 253);
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        .post .postOwner,.postOwner{
+            margin-bottom: 10px;
+            padding: 0% 20px;
+            color: rgb(94, 13, 170);
+            background-color: transparent;
+            border: 1px solid rgb(94, 13, 170);
+            font-family:Arial, Helvetica, sans-serif;
+            border-radius: 10px;
+        }
+
+        .comment{
+            padding: 10px;
+        }
+
+        .form{
+            display: inline;
+        }
+        .btn-public{
+            color: blue;
+            text-transform: uppercase;
+        }
+        .form>input{
+            border-radius: 5px ;
+            border:0.5px;
+             }
+
+    /* Popup form CSS */
+    /* The popup form - hidden by default */
+        .form-popup, .form-popup-dele, .update-myForm{
+            display: none;
+            position: absolute;
+            bottom: 0;
+            width: 78%;
+            height: 80%;
+            z-index: 9;
+            margin: 5% 0%;
+            border: 1px solid none;
+            align-content: center;
+            border-radius: 5px;
+            background: rgba(169, 147, 235, 0.9) ;
+        }
+
+    /* Add styles to the form container */
+        .form-container {
+            margin: auto;
+            margin-top: 120px;
+            width: 50%;
+            padding: 20px;
+            border: .5px solid;
+            border-radius: 5px;
+            background-color: rgb(220, 208, 253);
+        }
+
+    /* Full-width input fields */
+        .form-container input{
+        width: 85%;
+        padding: 15px;
+        margin: 20px 0%;
+        border: none;
+        border-radius: 10px;
+        background: #f1f1f1;
+        } 
+
+    /* When the inputs get focus, do something */
+        .form-container input[type=text]:focus {
+        background-color: #fff9f9;
+        outline: none;
+        }
+
+    /* Set a style for the submit/login button */
+        .form-container .btn {
+        background-color: rgb(85, 8, 158);
+        color: white;
+        border-radius: 30px;
+        padding: 5px 7px;
+        border: none;
+        cursor: pointer;
+        width: 45%;
+        align-self: center;
+        font-size: larger;
+        margin: 1px;
+        margin-bottom:10px;
+        display: block;
+        opacity: 0.8;
+        }
+
+        /* Add a red background color to the cancel button */
+        .form-container .cancel{
+        background-color: transparent;
+        font-size: medium;
+        color:rgb(90, 5, 110);
+        border: none;
+        float: right;
+        }
+
+        .form-popup-dele .form-container .cancel{
+        background-color: transparent;
+        color:rgb(90, 5, 110);
+        border: 2px solid;
+        float: right;
+        }
+
+        /* Add some hover effects to buttons */
+        .form-container .cancel:hover, .btn:hover, .open-button:hover {
+        opacity: 1;
+        cursor: pointer;
+        }
+        .form-container h1{
+            margin-left: 25%;
+            color:rgb(94, 13, 170);
+        }
+
+        .form-container .main-info{
+            color:  rgba(85, 63, 152, 0.9);
+            margin: 5% ;
+            display: flex;
+            flex-direction: row;
+        }
+        .form-container .main-info .info{
+            color: rgba(105, 99, 123, 0.9);
+            margin-left: 5%;
+        }
+        .form-container .btns{
+            display: flex;
+            flex-direction: row;
+        }
+        .form-container .btns a{
+            align-self: center;
+            text-decoration: none;
+            margin: 0% 5%;
+            color: rgba(31, 67, 225, 0.9);
+        }
+        .form-container .btns .btn a{
+            color: rgb(220, 208, 253);
+        }
+
+    </style>
+    
+</head>
+<body>
+
+    <div class="container">
+
+<!-- Navber Section -->
+
+        <h1 class="navitems">
+            <a class="homelink" href="{% url 'userPostsPage' %}" >Home</a> 
+            Recents
+            
+            <button class="open-button chatlink" onclick="openForm()">NewPost</button>
+        </h1>
+        <h3>
+
+            <a href="{% url 'chatsPage' %}" style="border: 1px solid;" >Messages:</a>
+
+            <a href="">{{user.name}}</a>
+        </h3>
+
+<!-- POST SECTION -->
+
+        <div class="post-box">
+
+            {% for post_k,post in datas.items %}
+            
+<!--         Post       -->
+            <div class="post">
+
+                {% for owner_k,owner in postOwner.items %}
+                {% if post.owner == owner.email %}
+                <button onclick="popUpProfile(this.value)" value="{{owner}}/{{user.email}}" class="postOwner">
+
+                    <h3>{{owner.name}}</h3>         
+                </button>
+                    {% endif %}
+                {% endfor %}
+
+                <div class="post-head">
+                    <h2>{{post.post}}</h2>
+                </div>
+
+                <div class="btns">
+
+<!--        Comment        -->
+
+                {% if post.owner == user.email %}  
+                    <button onclick="updateForm(this.value);" value="{{ post_k }},{{ post.post }}" ><a class="btn-update">Update</a></button>
+
+                    <button onclick="deleForm(this.value)" value="{{post_k}}"><a class="btn-del">Delete</a></button>
+                    <form method="post" action="{% url 'updateComment' %}"class="form">
+                        {% csrf_token %}
+                        <label for="comment">Comment   :</label>
+                        <input type="text" name="comment" id="comment">
+                        <input type="hidden" name="postId" id="" value="{{ post_k }}">
+                        <input type="hidden" name="comEmail" id="comEmail" value="{{post.owner}}">
+                        <button type="submit" class="btn-public">public</button>
+                    </form>
+                {% else %}
+                    <form method="post" action="{% url 'updateComment' %}"class="form">
+                        {% csrf_token %}
+                        <label for="comment">Comment   :</label>
+                        <input type="text" name="comment" id="comment">
+                        <input type="hidden" name="postId" id="" value="{{ post_k }}">
+                        <input type="hidden" name="comEmail" id="comEmail" value="{{post.owner}}">
+                        <button type="submit" class="btn-public">public</button>
+                    </form>
+                {% endif %}
+                </div>
+                <div class="comment">
+                    {% for com_k,com in comments.items %}
+                        {% if  post_k == com.post_id %}
+                            {% if post.owner == com.com_email %}
+                            <div>
+                                <label class="com-email">you:</label>
+                                <label>{{com.comment}}</label>
+                            </div>
+    
+                            {% else %}
+    
+                            <div>
+                                <label class="com-email">{{com.com_email}}   : </label>
+                                <label>{{com.comment}}</label>
+                            </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+<!-- PopUp Form Section  -->
+
+<!--         New Post        -->
+
+        <div class="form-popup" id="myForm">
+            <form action="{% url 'newPost' %}" method="post" class="form-container">
+                {% csrf_token %}
+                <button type="button" class="cancel" onclick="closeForm()">X</button>
+
+                <h1>NewPost</h1>
+
+                <label for="newpost">Meno:</label>
+                <input type="hidden" name="owner" value="{{user.email}}"> 
+                <input type="text" placeholder="type here.." name="newpost" required> 
+                <button type="submit" class="btn">Post</button>           
+            </form>
+        </div>
+
+<!-- updatepost  -->
+        <div class="form-popup" id="update-myForm">
+            <form action="{% url 'updatePost' %}" method="post" class="form-container" onsubmit="valueChange()">
+                {% csrf_token %}
+                <button type="button" class="cancel" onclick="closeUpdateForm()">X</button>
+
+                <h1>Update</h1>
+
+                <label for="newpost">Meno:</label>
+                <input type="hidden" name="owner" value="{{user.email}}"> 
+                <input type="hidden" name="updateId" id="updateId"> 
+                <input type="text" name="updateValue" id="updateValue"> 
+                <button type="submit" class="btn">Login</button>           
+            </form>
+        </div>
+
+<!-- delepost  -->
+        <div class="form-popup-dele" id="dele-myForm">
+            <form action="{% url 'delePost' %}" method="post"
+            class="form-container">
+                {% csrf_token %}
+                <h2>Are you sure ?</h2
+                    >
+                <input type="hidden" name="postId" id="delePostId">
+                <input type="hidden" name="owner" value="{{user.email}}">
+                <button type="button" class="btn cancel" onclick="closeDeleForm()">Cancel</button>  
+                <button type="submit" class="btn">Comfirm</button>           
+            </form>
+        </div>
+
+
+<!--    friend profile       -->
+
+        <div class="form-popup" id="FriProfileForm">
+            <div class="form-container">
+                <button type="button" class="cancel" onclick="closePorfileForm()">X</button>
+
+                <h1 id="title"></h1>
+
+                <div class="main-info">
+                    <div>
+                        <h3>Email:</h3>
+                        <h3>Phone:</h3>
+                        <h3>Bio:</h3>
+                    </div>
+                    <div class="info">
+                        <h4 id="email"></h4>
+                        <h4 id="phone"></h4>
+                        <p id="bio"></p>
+                    </div>
+                </div>
+                <div id="btns" class="btns">
+                    <a id="profile" href="">learn more...</a>           
+                </div>
+            </div>
+        </div>
+
+    </div> 
+
+<!--        javascript           -->
+    <script>
+
+        console.log("hello")
+
+        var id,post;
+// newPost
+        function openForm() {
+        document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+        }
+
+// delePost
+        function deleForm(value) {
+
+            console.log(value)
+            document.getElementById("delePostId").value = value
+            document.getElementById("dele-myForm").style.display = "block";
+        }
+        function closeDeleForm() {
+            console.log("canceldele")
+        document.getElementById("dele-myForm").style.display = "none";
+        }
+
+
+// UpdatePost
+        function updateForm(value) {
+            let parameters = value.split(',')
+             id  = parameters[0]
+             post = parameters[1]
+        document.getElementById("updateValue").value = post
+        document.getElementById("updateId").value = id
+        // console.log(post[0])
+        document.getElementById("update-myForm").style.display = "block";
+        }
+
+        function valueChange(){
+            newUpdateVal = document.getElementById("updateValue").value 
+            if(newUpdateVal === post){
+                event.preventDefault();
+                window.alert("No Change!");
+            }else{
+                window.alert("Successful changes!");
+                return closeUpdateForm();
+            }
+
+        }
+
+        function closeUpdateForm() {
+        document.getElementById("update-myForm").style.display = "none";
+        }
+
+
+// Profile
+    function popUpProfile(value) {
+        console.log(value)
+        let para = value.split('/')
+        var friend  = para[0]
+        var mainUserEmail = para[1]
+        var str_user = friend.replace(/\'/g,'\"');
+        var user = JSON.parse(str_user)
+        console.log(user.email)
+        console.log(mainUserEmail)
+
+    var addfriend = document.createElement("button");
+    addfriend.innerHTML='Add friend';
+    addfriend.classList.add("btn");
+    addfriend.setAttribute("id", "btn");
+    document.getElementById("title").innerHTML = user.name
+    document.getElementById("email").innerHTML = user.email
+    document.getElementById("phone").innerHTML = user.phone
+    document.getElementById("bio").innerHTML = user.info
+        
+    var buttons = document.getElementById("btns");
+
+    var friendbtn = document.getElementById("btn");
+        console.log(friendbtn);
+    if (friendbtn === null){
+            buttons.prepend(addfriend);
+            return popUpProfile(value);
+        }
+    console.log(user.email,mainUserEmail)
+    if ( user.email === mainUserEmail){
+        buttons.removeChild(friendbtn)
+    }
+        
+        console.log(friendbtn)
+        document.getElementById("FriProfileForm").style.display = "block";     
+    }
+
+    function closePorfileForm() {
+    document.getElementById("FriProfileForm").style.display = "none";
+    }
+    </script>
+</body>
+</html>

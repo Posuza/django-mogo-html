@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+        html{
+            background-color: rgb(210, 206, 210);
+            /* background: rgb(94, 13, 170); */
+        }
+        .container{
+
+            margin: 1%;
+            padding: 4%;
+        }
+        .navbar .navitems a{
+            text-decoration: none;
+        }
+        .post{
+            margin: 20px 20px;
+            background-color: rgb(220, 208, 253);
+            border-radius: 5px;
+            padding: 15px 15px;
+            border: 1px solid ;
+        }
+        .sms-box{
+            margin: 10px;
+            height: 510px;
+            margin: 0px 0px ;
+            overflow:hidden;
+            overflow-y: hidden;
+        }
+        .nav-sms-box{
+            margin:0%;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: row;
+            width:99%;
+            background-color: rgb(237, 237, 238);
+            border: 2px solid rgb(140, 64, 216);
+            border-radius: 10px;
+        }
+        .nav-sms-box>.sender{  
+            display: block;
+            padding: auto;
+            margin: 2%; 
+            background-color: rgb(220, 208, 253);
+            border-radius: 30px;
+            border: 1px solid rgb(140, 64, 216);
+        }
+        button:hover{
+            cursor: pointer;
+        }
+        .body-sms-box{
+            margin-top: 2%;
+            overflow: scroll;
+            height: 80%;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(237, 237, 238);
+            border: 2px solid rgb(140, 64, 216);
+            border-radius: 10px;
+        }
+        .body-sms-box>.sender{  
+            margin: 1%; 
+            background-color: rgb(220, 208, 253);
+            border-radius: 5px;
+
+            
+        }
+        .sender{  
+            margin-right: 15%;
+            background-color: rgb(220, 208, 253);
+            border-radius: 10px;
+            border: 1px solid rgb(140, 64, 216);
+            
+        }
+        a{
+            text-decoration: none;
+        }
+        .navitems>h1{
+            display: inline;
+        }
+
+
+            /* Popup form CSS */
+    /* The popup form - hidden by default */
+    .form-popup, .form-popup-dele, .update-myForm{
+            display: none;
+            position: absolute;
+            bottom: 5%;
+            width: 78%;
+            height: 70%;
+            z-index: 9;
+            margin: 5%;
+            border: 1px solid none;
+            align-content: center;
+            border-radius: 5px;
+            background: rgba(169, 147, 235, 0.9) ;
+        }
+
+    /* Add styles to the form container */
+        .form-container {
+            margin: auto;
+            margin-top: 120px;
+            width: 50%;
+            padding: 40px;
+            border: .5px solid;
+            border-radius: 5px;
+            background-color: rgb(220, 208, 253);
+        }
+
+    /* Full-width input fields */
+        .form-container input{
+        width: 85%;
+        padding: 15px;
+        margin: 20px 0%;
+        border: none;
+        border-radius: 10px;
+        background: #f1f1f1;
+        } 
+
+    /* When the inputs get focus, do something */
+        .form-container input[type=text]:focus {
+        background-color: #fff9f9;
+        outline: none;
+        }
+
+    /* Set a style for the submit/login button */
+        .form-container .btn {
+        background-color: rgb(85, 8, 158);;
+        color: white;
+        border-radius: 30px;
+        padding: 5px 5px;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+        align-self: center;
+        font-size: larger;
+        margin: 1px;
+        margin-bottom:10px;
+        display: block;
+        opacity: 0.8;
+        }
+
+        /* Add a red background color to the cancel button */
+        .form-container .cancel{
+        background-color: transparent;
+        font-size: medium;
+        color:rgb(90, 5, 110);
+        border: none;
+        float: right;
+        }
+
+        .form-popup-dele .form-container .cancel{
+        background-color: transparent;
+        color:rgb(90, 5, 110);
+        border: 2px solid;
+        float: right;
+        }
+
+        /* Add some hover effects to buttons */
+        .form-container .cancel:hover, .btn:hover, .open-button:hover {
+        opacity: 1;
+        cursor: pointer;
+        }
+        .form-container h1{
+            margin-left: 25%;
+            color:rgb(94, 13, 170);
+        }
+        .form-container .main-info{
+            color:  rgba(105, 99, 123, 0.9);;
+            margin: 5% ;
+            display: flex;
+            flex-direction: row;
+        }
+        .form-container .main-info .info{
+            color: rgba(108, 73, 214, 0.9);
+            margin-left: 5%;
+        }
+
+    </style>
+    
+    
+</head>
+<body>
+    <div class="container">
+
+
+        <div class="post">
+            <div class="navbar">
+            
+                <h1 class="navitems">
+                    <a href="{% url 'posts' %}" > < </a>
+                    <button class="sender">
+                        <a href="">
+                            <h3>@:{{owner.name}}</h3>
+                        </a>
+                    </button>
+                    Conversations 
+                </h1>
+            </div>
+            <div class="sms-box">
+                <div class="nav-sms-box">
+
+                    {% for fri_k,fri in users.items %}
+                    {% if fri.email != owner.email %}
+                        <button onclick="popUpProfile(this.value)" value="{{fri}}" class="sender">
+                            <a>
+                                <h3>{{fri.name}}</h3>
+                            </a>
+                        </button>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="body-sms-box">
+                    {% for fri_k,fri in users.items %}
+                    {% if fri.email != owner.email %}
+                    <button class="sender">
+                        <a href="{% url 'sms' fri.email %}">
+                            <h3>{{fri.name}}</h3>
+                         </a>
+                    </button>  
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+<!--    PopUp Form Section      -->
+
+<!-- Friend profile  -->
+
+        <div class="form-popup" id="FriProfileForm">
+            <div class="form-container">
+                <button type="button" class="cancel" onclick="closeForm()">X</button>
+
+                <h1 id="title"></h1>
+
+                <div class="main-info">
+                    <div>
+                        <h3>Email:</h3>
+                        <h3>Phone:</h3>
+                        <h3>Bio:</h3>
+                    </div>
+                    <div class="info">
+                        <h4 id="email"></h4>
+                        <h4 id="phone"></h4>
+                        <p id="bio"></p>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Add friend</button>           
+            </div>
+        </div>
+
+
+    </div> 
+
+
+<!--        javascript         -->
+
+    <script>
+      console.log("hello")
+
+    var id,post;
+    // newPost
+    function popUpProfile(value) {
+        var str_user = value.replace(/\'/g,'\"');
+        var user = JSON.parse(str_user)
+        console.log(user.name)
+    document.getElementById("title").innerHTML = user.name
+    document.getElementById("email").innerHTML = user.email
+    document.getElementById("phone").innerHTML = user.phone
+    document.getElementById("bio").innerHTML = user.info
+    document.getElementById("FriProfileForm").style.display = "block";
+    }
+
+    function closeForm() {
+    document.getElementById("FriProfileForm").style.display = "none";
+    }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+body{
+    background: rgb(219, 217, 217);;
+}
+.container{
+    margin: 10vh auto 0 auto;
+    background-color: rgb(94, 13, 170);
+    width: 600px;
+    display: flex;
+    align-items:end;
+    border-radius: 10px;
+}
+.image{
+    width: 250px;
+    text-shadow: gray;
+    font: 1em sans-serif;
+    text-overflow: hidden;
+
+    padding-left: 20px;
+    color: white;
+    margin:auto;
+}
+
+.image button{
+    margin-bottom: 16px;
+    margin-top: 400px;
+    background-color: white;
+    padding:10px;
+    width: 90%;
+    border-radius: 10px;
+    font: 1em sans-serif;
+}
+
+.image button a{
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+#form{
+    width: 300px;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    font-size: 16px;
+}
+#form h1{
+    color: rgb(94, 13, 170);
+    text-align: center;
+}
+
+#form .btn{
+    background-color: aqua;
+}
+
+
+#form button{
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    font-size: 17px;
+    background-color: rgb(94, 13, 170);
+    border: none;
+    border-radius: 10px;
+}
+
+#form button:hover{
+    cursor: pointer;
+}
+
+.input-control{
+    display: flex;
+    flex-direction: column;
+    font: 1em sans-serif;
+    color: gray;
+}
+
+.input-control input,textarea{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-size: 15px;
+    padding: 7px 0;
+    width: 100%;
+}
+
+.input-control textarea:focus{
+    outline: 0;
+}
+.input-control input:focus{
+    outline: 0;
+}
+
+.input-control.success input{
+    border-color: rgb(3, 119, 3);
+}
+
+
+.input-control.error input{
+    border-color: rgb(171, 5, 5);
+
+}
+.input-control .error{
+    color: red;
+    font-size: 12px;
+    height: 13px;
+}

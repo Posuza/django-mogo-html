@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+        html{
+            background-color: rgb(210, 206, 210);
+            /* background: rgb(94, 13, 170); */
+        }
+        .navitems> a{
+            margin-right: 20%;
+            text-decoration: none;
+        }
+        .container{
+            background-color: rgb(220, 208, 253);
+            overflow: hidden;
+            border: 1px solid;
+            align-self: center;
+            padding:0px 10%;
+            height: 730px;
+        }
+        .container a{
+            padding-bottom: 5px;
+        }
+
+        /* noti-bar */
+    
+        .noti-box.active{
+            width: 50%;
+            border: 1px solid;
+            display: flex;
+            flex-direction: column;
+            overflow-y: hidden;
+        }
+        .noti-box{
+            width: 35px;
+        }
+        .noti-box .noti-head{
+            display: none;
+        }
+
+        .noti-box .noti-header{
+            border: 1px solid;
+            display: flex;
+            flex-direction: row-reverse;
+        }
+        .noti-box .noti-header .noti-btn{
+            margin-left: 25%;
+        }
+
+        .noti-box .noti-footer{
+            /* display: none; */
+            border: 1px solid;
+            width: 80%;
+            margin-right: 20%;
+            padding: 3px;
+            height: 70px;
+            overflow-y:scroll;
+        }
+
+        /* @end notibar  */
+
+        .btn-del{
+            color: rgb(195, 1, 1);
+            text-transform: uppercase;
+            text-decoration: none;
+            
+        }
+        .com-email{
+            color: rgb(94, 13, 170);
+            margin-right: 20px;
+        }
+        .btn-update{
+            color: green;
+            text-transform: uppercase;
+            text-decoration: none;
+            
+        }
+
+        .comment{
+            padding: 10px;
+        }
+        .post-head{
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: rgb(179, 176, 181);
+            border-radius: 5px;
+            border: 1px solid;
+        }
+        .post-box{
+            background-color: rgb(237, 237, 238);
+            height: 540px;
+            border: 1px solid;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: scroll;
+            margin-bottom: 2px;
+        }
+        .post{
+             /* background: rgb(94, 13, 170); */
+            background-color: rgb(220, 208, 253);
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .form{
+            display: inline;
+        }
+        .btn-public{
+            color: blue;
+            text-transform: uppercase;
+        }
+        .form>input{
+            border-radius: 5px ;
+            border:0.5px;
+             }
+
+    /* Popup form CSS */
+    /* The popup form - hidden by default */
+  
+
+
+
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            
+            <h1 class="navitems"><a href="{% url 'posts' %}" > Recents </a>Your Posts</h1>
+            <div class="not-bar">
+                
+            </div>
+            <div class="noti-box active">
+                <div class="noti-header">
+                    <button  onclick="closeNoti()" class="noti-btn" id="closeNoti">@></button>
+                    <div class="noti-head">
+                        Notice
+                    </div>
+                </div>
+
+                <div class="noti-footer">
+                    <ul>
+                        <li>hedd</li>
+                        <li>heddasdvasvsd</li>
+                        <li>hedd</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="post-box">
+
+            {% for post_k,post in datas.items %}
+    
+                    {% if post.owner == user.email %}    
+                        <div class="post">
+                            <h5>{{post.owner}}</h5>
+                            <div class="post-head">
+                                <h2>{{post.post}}</h2>
+                            </div>
+                            <div class="btns">
+                                <button><a href="" class="btn-update">Update</a></td></button>
+                                <button><a href="{% url 'delete' post_k  %}" class="btn-del">Delete</a></button>
+    
+                                <form method="post" action="{% url 'updateComment' %}"class="form">
+                                    {% csrf_token %}
+                                    <label for="comment">Comment   :</label>
+                                    <input type="text" name="comment" id="comment">
+                                    <input type="hidden" name="owner" id="owner" value="post.owner">
+                                    <input type="hidden" name="postId" id="" value="{{ post_k }}">
+                                    <input type="hidden" name="comEmail" id="comEmail" value="{{post.owner}}">
+                                    <button type="submit" class="btn-public">public</button>
+                                </form>
+                            </div>
+                            <div class="comment">
+                                {% for com_k,com in comments.items %}
+                                    {% if  post_k == com.post_id %}
+                                        {% if post.owner == com.com_email %}
+                                        <div>
+                                            <label class="com-email">you:</label>
+                                            <label>{{com.comment}}</label>
+                                        </div>
+    
+                                        {% else %}
+    
+                                        <div>
+                                            <label class="com-email">{{com.com_email}}   : </label>
+                                            <label>{{com.comment}}</label>
+                                        </div>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+    
+            {% endfor %}
+        </div>
+    </div> 
+
+    <script>
+
+    </script>  
+</body>
+</html>

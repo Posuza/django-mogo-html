@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+        html{
+            background: rgb(219, 217, 217);
+        }
+        .container{
+            align-self: center;
+        }
+        table,td{
+            background: white;
+            border: 0.5px solid rgba(67, 67, 67, 0.466);
+            padding: 3px;
+        }
+        thead{
+            background:deepskyblue;
+            color: rgb(7, 82, 94);
+        }
+        th{
+            padding: 10px 3px;
+        }
+        .btn-del{
+            color: rgb(195, 1, 1);
+            text-transform: uppercase;
+            text-decoration: none;
+            
+        }
+        .btn-update{
+            color: green;
+            text-transform: uppercase;
+            text-decoration: none;
+            
+        }
+        table .add-btn{
+            margin-right: 10px;
+            border-radius: 7px;
+            background-color: rgb(94, 13, 170);
+        }
+        table .adduser-btn{
+            padding: 3px;
+            text-decoration: none;
+            color: white;
+
+            
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="table-title">Users Information</h2>
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Passwrod</th>
+                    <th>Phone</th>
+                    <th>Bio</th>
+                    <th></th>
+                    <th class="add-btn"><a class="adduser-btn" href="{% url 'register' %}">AddUser</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for k,v in datas.items %}
+                <tr>
+                    <td>{{k}}</td>
+                    <td>{{v.name}}</td>
+                    <td>{{v.email}}</td>
+                    <td>{{v.password}}</td>
+                    <td>{{v.phone}}</td>
+                    <td>{{v.info}}</td>
+                    <td><a href="{% url 'updatePage' k  %}" class="btn-update">Update</a></td>
+                    <td><a href="{% url 'delete' k  %}" class="btn-del">Delete</a></td>
+                </tr>   
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>

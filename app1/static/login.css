@@ -1,0 +1,129 @@
+body{
+    background: rgb(219, 217, 217);
+    font: sans-serif;
+}
+.container{
+    margin: 10vh auto;
+    /* background-color: #f0f0f0; */
+    background-color: rgb(94, 13, 170);
+    width: 600px;
+    display: flex;
+    align-items:end;
+    border-radius: 10px;
+}
+.image{
+    width: 300px;
+
+    text-shadow: gray;
+    padding-left: 30px;
+    margin-bottom: 60px;
+    color: white;
+}
+.span{
+    margin-top: 60px;
+
+    font-size: 16px;
+    color: rgb(160, 149, 149);
+    font: sans-serif;
+}
+a{
+    color: white;
+}
+a:hover{
+    color: rgb(204, 130, 250);
+}
+#form{
+    width: 300px;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    font-size: 16px;
+}
+#form h1{
+    color: rgb(94, 13, 170);
+    text-align: center;
+}
+
+#form .login-btn{
+    border-left: 10x;
+    width: 49.2%;
+    padding: 4px;
+    font-size: 20px;
+    color: white;
+    border: 2px solid rgb(94, 13, 170);
+    background-color: rgb(94, 13, 170);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#form .cancel-btn{
+    width: 49.2%;
+    color: rgb(94, 13, 170);
+    font-size: 20px;
+    padding: 4px;
+    border: 2px solid rgb(94, 13, 170);
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#form .cancel-btn a{
+    color: rgb(94, 13, 170);
+    text-decoration: none;
+}
+
+#form .btns{
+
+    margin-top: 10px;
+    width: 100%;
+}
+
+#form .cancel-btn:hover{
+    cursor: pointer;
+    background-color:rgb(114, 119, 240);
+    color:  rgb(94, 13, 170);
+}
+#form .login-btn:hover{
+    cursor: pointer;
+    border: 2px solid rgb(94, 13, 170);
+    background-color:  rgb(204, 130, 250);
+    color: rgb(94, 13, 170);
+}
+
+.input-control{
+    display: flex;
+    flex-direction: column;
+    font: 1em sans-serif;
+    color: gray;
+}
+
+.input-control input,textarea{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-size: 15px;
+    padding: 7px 0;
+    width: 100%;
+}
+
+.input-control textarea:focus{
+    outline: 0;
+}
+.input-control input:focus{
+    outline: 0;
+}
+
+.input-control.success input{
+    border-color: rgb(3, 119, 3);
+}
+
+
+.input-control.error input{
+    border-color: rgb(171, 5, 5);
+
+}
+.input-control .error{
+    color: red;
+    font-size: 12px;
+    height: 13px;
+}

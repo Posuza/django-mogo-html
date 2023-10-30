@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{% static 'register.css' %}"> -->
+    <link rel="stylesheet" href="../static/register.css">
+
+
+    <!-- javascript -->
+    <script src="../static/register.css"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="image">
+            <h1>User Management System</h1>
+            <div class="span">
+                <span>...alreagy have account </span>
+                <a href="{% url 'loginPage' %}">login</a>
+            </div>
+        </div>
+        <form method="post" action="{% url 'create' %}" id="form">
+            <h1>Register</h1>
+
+            {% csrf_token %}
+            <div class="input-control">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+                <div class="error">{{nameError}}</div>
+            </div>
+
+            <div class="input-control">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email">
+                <div class="error">{{emailError}}</div>
+            </div>
+
+            <div class="input-control">
+                <label for="phone">Phone</label>
+                <input type="text" name="phone" id="phone">
+                <div class="error">{{phoneError}}</div>
+            </div>
+
+            <div class="input-control">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+                <div class="error">{{passwordError}}</div>
+            </div>
+
+            <div class="input-control">
+                <label for="password2">Re-type password</label>
+                <input type="password" name="password2" id="password2">
+                <div class="error">{{passwordError}}</div>
+            </div>
+            <div class="btns">
+                <button class="cancel-btn"><a href="{% url 'cancel' %}">Cancel</a></button>
+                <button class="reg-btn" type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
