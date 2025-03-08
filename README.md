@@ -68,7 +68,7 @@ This project is a web application that combines Django's powerful web framework 
 
 ## License
 
-[Include license information here]
+  - it is an opened source
 
 ## Contact
 
